@@ -1,0 +1,41 @@
+<div class="card mt-4" style="max-width: 40rem; margin: auto;">
+            
+            <div class="card-header">
+                <div class="row">
+                    <h1>Postuler à une offre</h1>
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <div class="container">
+
+                    {{ form_start(form) }}
+
+                        <div class="form-group mt-1">
+                            {{ form_row(form.localisation) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.salaireDesire) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.fichierPDF) }}
+                        </div>
+                        <div class="form-group mt-3">
+                                <a href="{{ path('postulerIndex') }}">Retour</a>
+                        </div>
+
+                        <div class="form-submit mt-3 text-center">
+                            <button type="submit" class="btn btn-primary">Postuler</button>
+                        </div>
+                        
+
+                    {{ form_end(form) }}
+
+                </div>
+                    
+            </div>
+
+</div>
+   
+

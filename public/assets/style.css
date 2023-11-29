@@ -1,0 +1,39 @@
+.navbar-brand{
+    color:burlywood;
+}
+.my-navbar{
+    background-color: blueviolet;
+}
+.my-link{
+    color:white;
+}
+.my-icone{
+    color:brown
+}
+footer{
+    background-color: blueviolet; 
+    color:white; 
+    margin-top: 5px; 
+}
+
+.btn-prim
+{
+    background-color: blueviolet;
+    color: white;
+}
+
+.btn-prim:hover
+{
+    background-color: rgba(137, 43, 226, 0.378);
+}
+
+.avatar{
+    max-width: 128px;
+    max-height: 128px;
+    border-radius: 50%;
+}
+
+.avatar-mini{
+    max-width: 24px;
+    max-height: 24px;
+}

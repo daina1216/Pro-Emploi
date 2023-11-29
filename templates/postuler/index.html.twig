@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Postuler index{% endblock %}
+
+{% block body %}
+
+    {% include 'inclusion/generalHeader.html.twig' %}
+
+    <div class="container mt-5">
+
+        <h1>La liste de toutes mes offres</h1>
+
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th class="h4">Creation</th>
+                    <th class="h4">Mon cv</th>
+                    <th class="h4">Localisation</th>
+                    <th class="h4">Salaire Desiré</th>
+                    <th class="h4">Société intéressée</th>
+                    <th class="h4">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for postuler in postulers %}
+                <tr>
+                    <td>{{ postuler.createAt ? postuler.createAt|date('Y-m-d') : '' }}</td>
+                    <td>{{ postuler.uploaderCV }}</td>
+                    <td>{{ postuler.localisation }}</td>
+                    <td>{{ postuler.salaireDesire }}</td>
+                    <td>{{ postuler.offres.nomSociete }}</td>
+                    <td>
+                        
+                        <form method="post" action="{{ path('postulerDelete', {'id': postuler.id}) }}" onsubmit="return confirm('Etes-vous sûr de supprimer cet élément?');">
+                            <a href="{{ path('postulerEdit', {'id': postuler.id}) }}" class="btn btn-primary">Modifier</a>
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ postuler.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun élément trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

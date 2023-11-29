@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Pro Emploi
+{% endblock %}
+
+
+{% block body %}
+
+    {% include 'inclusion/generalHeader.html.twig' %}
+
+    {% if app.user.status == "Recruteur" %}
+        {% include 'home/recruteur.html.twig' %}
+    {% else %}
+    
+        {% include 'home/demandeur.html.twig' %}
+
+    {% endif %}
+
+
+{% endblock %}

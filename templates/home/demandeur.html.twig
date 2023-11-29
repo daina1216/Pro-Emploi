@@ -1,0 +1,39 @@
+
+<div class="container">
+
+        <h1 class="my-3"> Voici les jobs disponibles</h1>
+
+        <div class="row">
+
+            {% for jobs in jobs %}
+
+                <div class="col-md-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header text-center">
+                            {{ jobs.nomSociete }} <br>
+                            <strong>{{ jobs.salaireMin}} - {{ jobs.salaireMax}} (XOF)</strong> <br>
+                            <small>{{ jobs.localisation}}</small>
+
+                        </div>
+
+                        <img src="{{ asset('assets/img/im.jpg') }}" 
+                        style="height:200px; width:100%; display: block">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                {{jobs.titre}}
+                            </h4>
+                            <p class="card-text">{{ jobs.description }}</p>
+   
+                            <a href="{{path('createPostuler', {'id': jobs.id})}}" class="btn btn-primary" id="postuler">Postuler</a>
+                            
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+</div>
+

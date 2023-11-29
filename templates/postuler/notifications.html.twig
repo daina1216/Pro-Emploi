@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notications{% endblock %}
+
+{% block body %}
+
+    {% include 'inclusion/generalHeader.html.twig' %}
+
+    <div class="container mt-5">
+
+        <h1>Mes candidatures</h1>
+
+       
+            {% for postuler in postulers %}
+                {% if app.user == postuler.auteur and postuler.accept %}
+                
+                    <div class="col-6 col-md-4 mb-2 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color:blueviolet;">Poste : {{postuler.offres.titre}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic; font-weight:bold;">Entreprise : {{ postuler.offres.nomSociete }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted" style="font-style: italic; font-weight:bold;">E-mail : {{ postuler.offres.auteur.email}}</h6>
+                                <p class="card-text">
+                                    Votre candidature a été accepté. Veuillez contactez l'entreprise par E-mail pour un entretien
+                                </p>
+
+                        
+            
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                {% endif %}
+
+                {% if postuler is empty %}
+                    <h5>Aucun élément trouvé</h5>
+                {% endif %}
+            {% endfor %}
+
+    </div>
+
+{% endblock %}

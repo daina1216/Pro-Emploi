@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Jobs{% endblock %}
+
+{% block body %}
+    
+    <div class="card mt-4" style="max-width: 40rem; margin: auto;">
+            
+            <div class="card-header">
+                <div class="row">
+                    <h1>Modifier une offre</h1>
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <div class="container">
+
+                    {{ form_start(form) }}
+
+                        <div class="form-group mt-1">
+                            {{ form_row(form.titre) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.description) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.localisation) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.salaireMin) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.salaireMax) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.nomSociete) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.categorie) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form_row(form.expireAt) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            <a href="{{ path('jobsIndex') }}" class="text-decoration-none">Retour</a>
+                        </div>
+
+
+                        <div class="form-submit mt-3 text-center">
+                            <button type="submit" class="btn btn-primary">Modifier</button>
+                        </div>
+                        
+
+                    {{ form_end(form) }}
+
+                </div>
+                    
+            </div>
+
+    </div>
+   
+
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Pro Emploi
+
+{% endblock %}
+
+{% block body %}
+
+{% include 'inclusion/header.html.twig' %}
+
+<div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ asset('assets/img/im.jpg') }}" class="d-block w-100" height="500" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>
+                    Bienvenue chez Pro_Emploi
+                </h5>
+                <p>
+                    Trouvez votre chemin vers une carrière brillante!
+
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('assets/img/im.jpg') }}" class="d-block w-100" height="500" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>
+                    Bienvenue chez Pro_Emploi
+                </h5>
+                <p>
+                    Trouvez votre chemin vers une carrière brillante!
+
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('assets/img/im.jpg') }}" class="d-block w-100" height="500" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>
+                    Bienvenue chez Pro_Emploi
+                </h5>
+                <p>
+                    Trouvez votre chemin vers une carrière brillante!
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">
+            Previous
+
+        </span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">
+            Next
+
+        </span>
+    </button>
+</div>
+
+<div class="container">
+
+    <div class="row mt-4 bg-light">
+        <h3 class="text-center">
+            Nos dernières offres d'emplois
+        </h3>
+        <div class="row mt-4">
+            {% for jobs in jobs %}
+        
+                <div class="col-md-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header text-center">
+                            {{ jobs.nomSociete }} <br>
+                            <strong>{{ jobs.salaireMin}} - {{ jobs.salaireMax}} (XOF)</strong> <br>
+                            <small>{{ jobs.localisation}}</small>
+
+                        </div>
+
+                        <img src="{{ asset('assets/img/im.jpg') }}" 
+                        style="height:200px; width:100%; display: block">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                {{jobs.titre}}
+                            </h4>
+                            <p class="card-text">{{ jobs.description }}</p>
+                            
+  
+                            <a href="#" class="btn btn-secondary" id="postuler">Postuler</a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="text-center mb-5">
+            <a href="#" title="voir les dernières offres">
+                <button type="button" class="btn" style="border-radius: 30px; background-color: blueviolet; color:white;">VOIR PLUS</button>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+        <h3 class="text-center mb-3">A propos</h3>
+
+        <div class="col-6">
+            <img src="{{ asset('assets/img/im.jpg') }}" class="d-block w-100" height="280" alt="...">
+        </div>
+
+        <div class="col-6">
+            <P>
+                Votre plateforme spécialisée dans la recherche d'emploi!
+                Nous comprenons l'importance d'une carrière épanouissante et nous sommes là pour vous aider à
+                trouver le poste idéal.
+                En tant que site de recherche d'emploi innovant, Pro_Emploi propose une approche personnalisée pour
+                aider les demandeurs d'emploi à trouver les opportunités qui correspondent le mieux à leurs
+                compétences et à leurs aspirations professionnelles.
+                Grâce à une technologie de pointe et à une équipe d'experts en recrutement, Pro_Emploi permet aux
+                candidats de postuler des offres d'emploi applicables en quelques clics seulement.
+                De plus, les employeurs peuvent utiliser Pro_Emploi pour trouver des candidats qualifiés et adaptés
+                à leurs besoins spécifiques, ce qui en fait une solution complète pour tous les acteurs du marché de
+                l'emploi.
+            </P>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-3">
+        <h3 class="text-center">
+            Nos Partenaires
+        </h3>
+
+        <div class="col-12 text-center">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+            <img src="https://picsum.photos/120" class="ms-2 mt-2 rounded" alt="...">
+        </div>
+    </div>
+</div>
+
+{% include 'inclusion/footer.html.twig' %}
+
+{% endblock %}

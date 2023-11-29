@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une offre{% endblock %}
+
+{% block body %}
+
+    {% include 'inclusion/generalHeader.html.twig' %}
+
+
+    {{ include('jobs/_form.html.twig') }}
+
+
+    {% include 'inclusion/footer.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notications{% endblock %}
+
+{% block body %}
+
+    {% include 'inclusion/generalHeader.html.twig' %}
+
+    <div class="container mt-5">
+
+        <h1>Dossiers des tous les postulants</h1>
+
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th class="h4">Creation</th>
+                    <th class="h4">CV du postulant</th>
+                    <th class="h4">Localisation</th>
+                    <th class="h4">Salaire Desiré</th>
+                    <th class="h4">Offre Concernée</th>
+                    <th class="h4">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for postuler in postulers %}
+                {% if app.user == postuler.offres.auteur %}
+                    <tr>
+                        <td>{{ postuler.createAt ? postuler.createAt|date('Y-m-d') : '' }}</td>
+                        <td>
+
+                            <a href="{{ path('afficherCV', {'uploaderCV': postuler.uploaderCV}) }}" class="btn btn-warning">Ouvrir le CV</a>
+                            
+                        </td>
+                        <td>{{ postuler.localisation }}</td>
+                        <td>{{ postuler.salaireDesire }}</td>
+                        <td>{{ postuler.offres.titre }}</td>
+                        <td>
+
+                            {% if postuler.accept is null and postuler.refuse is null %}
+
+                                <a href="{{path('accept', {'id': postuler.id})}}" class="btn btn-success">Accepter</a>
+                                <a href="{{path('refuser', {'id': postuler.id})}}" class="btn btn-danger">Refuser</a>
+
+                            {% endif %}
+
+                            {% if postuler.accept  and postuler.refuse is null %}
+
+                                <p class="text-success">Dossier accepté</p>
+
+                            {% endif %}
+
+                            {% if postuler.accept is null and postuler.refuse %}
+
+                                <p class="text-danger">Dossier Refusé</p>
+
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+
+                    <tr>
+                        <td colspan="6">Aucune Notication trouvée</td>
+                    </tr>
+
+                {% endif %}
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun élément trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}
